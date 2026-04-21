@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { postCredGetMeChain, userPostValidationChains, validate } from "../../middleware.js";
+import { postCredGetMeChain, userPostValidationChains, validate } from "../chains/validationChains/userValidation.js";
 import { responseProcessor } from "../shared/responseProcessor.js";
-import {signupController, loginController} from "./signup.controller.js"
+import {signupController, loginController} from "../controllers/auth.controller.js"
 
 const authRoutes = Router();
 

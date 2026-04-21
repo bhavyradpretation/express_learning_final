@@ -1,6 +1,6 @@
 import express from "express";
 import cookieParser from "cookie-parser";
-import { loggingMiddleware } from "./middleware.js";
+import { loggingMiddleware } from "./src/shared/middlewares/auth.middleware.js";
 import {routes} from "./src/routes/routes.js"
 import { StatusCodes } from "http-status-codes";
 import { ApiError } from "./src/shared/error.js";
