@@ -37,7 +37,7 @@ const userPostValidationChains = [
         .withMessage('Password must be at least 8 characters long.')
 ]
 
-const userPutValidationChain =[
+const userPutPatchValidationChain =[
     body("username")
         .notEmpty()
         .withMessage("username cannot be empty !")
@@ -71,5 +71,5 @@ export {
     validate,
     userPostValidationChains,
     postCredGetMeChain,
-    userPutValidationChain
+    userPutPatchValidationChain
 }

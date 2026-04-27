@@ -17,9 +17,9 @@ import {
 } from "../controllers/users.controller.js";
 import {
   userPostValidationChains,
-  userPutValidationChain,
   postCredGetMeChain,
   validate,
+  userPutPatchValidationChain,
 } from "../chains/validationChains/userValidation.js";
 import { responseProcessor } from "../shared/responseProcessor.js";
 import { compare, hash } from "bcryptjs";
@@ -41,8 +41,8 @@ userRoutes.post("/users",validate(userPostValidationChains),responseProcessor(po
 userRoutes.get("/users/me", responseProcessor(getUserMeController));
 userRoutes.post("/users/me",validate(postCredGetMeChain),responseProcessor(postUserMeController));
 userRoutes.get("/users/:id", resolveUserById, responseProcessor(getUserByIdController) );
-userRoutes.put("/users/:id",resolveUserById,validate(userPutValidationChain),responseProcessor(putUserByIdController));
-userRoutes.patch("/users/:id", resolveUserById, responseProcessor(patchUserByIdController) );
+userRoutes.put("/users/:id",resolveUserById,validate(userPutPatchValidationChain),responseProcessor(putUserByIdController));
+userRoutes.patch("/users/:id", resolveUserById,validate(userPutPatchValidationChain), responseProcessor(patchUserByIdController) );
 userRoutes.delete("/users/:id", resolveUserById, responseProcessor(deleteUserByIdController));
 
 export { userRoutes };
