@@ -21,7 +21,7 @@ const postUserMiddleware = (req, res, next) => {
   next();
 };
 
-const resolveUserById = (req, res, next) => {
+const resolveById = (req, res, next) => {
   const {
     body,
     params: { id },
@@ -32,4 +32,4 @@ const resolveUserById = (req, res, next) => {
   next();
 };
 
-export { loggingMiddleware, postUserMiddleware, resolveUserById };
+export { loggingMiddleware, postUserMiddleware, resolveById };

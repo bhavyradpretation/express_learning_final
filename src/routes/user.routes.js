@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { paginationMiddleware } from "../shared/middlewares/pagination.middleware.js";
-import { resolveUserById } from "../shared/middlewares/auth.middleware.js";
+import { resolveById } from "../shared/middlewares/auth.middleware.js";
 import {
   getUsersController,
   postCreateUserController,
@@ -40,9 +40,9 @@ userRoutes.get("/users",paginationMiddleware(),responseProcessor(getUsersControl
 userRoutes.post("/users",validate(userPostValidationChains),responseProcessor(postCreateUserController),);
 userRoutes.get("/users/me", responseProcessor(getUserMeController));
 userRoutes.post("/users/me",validate(postCredGetMeChain),responseProcessor(postUserMeController));
-userRoutes.get("/users/:id", resolveUserById, responseProcessor(getUserByIdController) );
-userRoutes.put("/users/:id",resolveUserById,validate(userPutPatchValidationChain),responseProcessor(putUserByIdController));
-userRoutes.patch("/users/:id", resolveUserById,validate(userPutPatchValidationChain), responseProcessor(patchUserByIdController) );
-userRoutes.delete("/users/:id", resolveUserById, responseProcessor(deleteUserByIdController));
+userRoutes.get("/users/:id", resolveById, responseProcessor(getUserByIdController) );
+userRoutes.put("/users/:id",resolveById,validate(userPutPatchValidationChain),responseProcessor(putUserByIdController));
+userRoutes.patch("/users/:id", resolveById,validate(userPutPatchValidationChain), responseProcessor(patchUserByIdController) );
+userRoutes.delete("/users/:id", resolveById, responseProcessor(deleteUserByIdController));
 
 export { userRoutes };
